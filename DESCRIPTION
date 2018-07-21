@@ -1,0 +1,23 @@
+Package: whoa
+Type: Package
+Title: Evaluation of Genotyping Error in Genotype By Sequencing Data
+Version: 0.0.1.900
+Authors@R: c(
+    person(given = c("Eric", "C."), family = "Anderson", email = "eric.anderson@noaa.gov", role = c("aut", "cre"))
+  )
+Maintainer: Eric C. Anderson <eric.anderson@noaa.gov>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: CC0
+Encoding: UTF-8
+LazyData: TRUE
+Depends:
+    R (>= 3.3.0)
+Imports: 
+    dplyr,
+    magrittr,
+    tibble,
+    Rcpp (>= 0.12.16),
+    vcfR
+LinkingTo: Rcpp
+RoxygenNote: 6.0.1
