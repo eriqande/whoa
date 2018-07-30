@@ -18,6 +18,8 @@ Imports:
     magrittr,
     tibble,
     Rcpp (>= 0.12.16),
-    vcfR
+    vcfR,
+    viridis,
+    ggplot2
 LinkingTo: Rcpp
 RoxygenNote: 6.0.1

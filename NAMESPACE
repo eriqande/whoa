@@ -2,6 +2,7 @@
 
 export(bin_depths)
 export(infer_m)
+export(posteriors_plot)
 export(prep_vcf_for_est_m_rd)
 export(tidy_m_ests)
 importFrom(Rcpp,evalCpp)

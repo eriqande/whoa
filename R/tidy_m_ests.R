@@ -30,7 +30,5 @@ tidy_m_ests <- function(E, S, TB, burn = 50) {
        num_sweeps = ncol(E$Mtrace),
        burn_in = burn
        )
-
-
 }
 

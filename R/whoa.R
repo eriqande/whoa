@@ -43,7 +43,11 @@ if(getRversion() >= "2.15.1")  {
       ".",
       "Freq",
       "dp",
-      "bin"
+      "bin",
+      "mean_dp",
+      "lo95",
+      "hi95",
+      "total_n"
     )
   )
 }
