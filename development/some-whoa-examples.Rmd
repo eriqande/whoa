@@ -1,0 +1,43 @@
+---
+title: "An example or two of applying Whoa to some Data Sets"
+output: 
+  html_notebook:
+    toc: true
+    toc_float: true
+---
+
+
+
+```{r}
+library(tidyverse)
+library(whoa)
+library(vcfR)
+```
+
+## Red Drum
+
+Let us first try the red drum data set.  This is in the gbs-miscall-rate repo.
+
+```{r}
+# paths here not reproducible
+# read the vcf
+v <- read.vcfR("../../gbs-miscall-rates/raw_data/red_drum_Final_Filtered_SNPs.vcf.gz")
+
+# these are all considered to be a separate population, so we can just run
+# infer_m() on the whole schmeer
+
+# let's shoot for at least 50K genotypes in each bin
+m <- infer_m(v, minBin = 50000)
+
+
+# now, let's make a picture
+g <- posteriors_plot(m$m_posteriors)
+
+# print it
+g
+
+```
+
+
+OK, that is all working.
+
