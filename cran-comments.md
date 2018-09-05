@@ -19,6 +19,8 @@ Currently no known reverse dependencies
 
 This is the first submission of this package.  
 
-I inadvertently used devtools::submit_cran and got a cryptic error
+I inadvertently used devtools::submit_cran() and got a cryptic error
 message back.  Not sure if it made it through or not.  My many sincere
-apologies if this is a double-submission.  
+apologies if this is a double-submission.  I am using devtools::release() 
+now.
+
