@@ -8,6 +8,14 @@
 #' @param P the tibble that is the m_posteriors component of \code{\link{infer_m}}
 #' @return a ggplot2 object.
 #' @export
+#' @examples
+#' # get something to plot (short run for example)
+#' im <- infer_m(lobster_buz_2000, minBin = 1000, num_sweeps = 100, burn_in = 20)
+#'
+#' # then plot it
+#' g <- posteriors_plot(im$m_posteriors)
+#'
+#' # now g is a ggplot object
 posteriors_plot <- function(P) {
   ggplot2::ggplot(P) +
     ggplot2::geom_line(ggplot2::aes(x = mean_dp, y = mean)) +

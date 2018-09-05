@@ -4,7 +4,8 @@ using namespace Rcpp;
 
 //' Estimate heterozygote miscall rate for different read depth categories (no nulls)
 //'
-//' This is pretty simple.
+//' To see how this Rcpp function is applied, see the code in
+//' \code{\link{infer_m}}.
 //' @param Y the 012,-1 matrix that is N x L giving the observed genotypes of the N individuals
 //' at L SNPs.
 //' @param R integer matrix that is N x L giving the read depth categories.  These must be indexed from

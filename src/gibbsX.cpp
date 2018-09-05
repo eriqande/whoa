@@ -6,7 +6,8 @@ using namespace Rcpp;
 
 //' compute full conditional for each X given Y, p, R, and m, and then sample from it
 //'
-//' This just writes new values into X as if it were an output variable
+//' This just writes new values into X as if it were an output variable.
+//' Internal function used within \code{\link{estimate_m_rd}}.
 //' @keywords internal
 // [[Rcpp::export]]
 void gibbsX(IntegerMatrix X, IntegerMatrix Y, IntegerMatrix R, NumericVector p, NumericVector M) {

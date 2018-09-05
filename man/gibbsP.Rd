@@ -7,6 +7,7 @@
 gibbsP(p, X, pri)
 }
 \description{
-This just writes new values into P as if it were an output variable
+This just writes new values into P as if it were an output variable.
+Internal function used within \code{\link{estimate_m_rd}}.
 }
 \keyword{internal}

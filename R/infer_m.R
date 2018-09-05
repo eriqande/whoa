@@ -45,8 +45,16 @@
 #'   \item{m_traces}{A tibble with all the values visited for m for every read depth bin.  This tibble
 #'   has three columns: bin = the index of the read depth bin; sweep = the sweep number, value = the value
 #'   of m for that read depth bin in that particular sweep. }
+#'   \item{dp_summary}{A tibble summarizing how many genotypes of different read depths
+#'   appear in each bin.}
+#'   \item{bin_stats}{A tibble with a different summary of the read-depth bins.}
+#'   \item{num_sweeps}{Number of MCMC sweeps used.}
+#'   \item{burn_in}{Number of sweeps discarded as burn in.}
 #' }
 #' @export
+#' @examples
+#' # Shorter run than recommended (for quick example...)
+#' im <- infer_m(lobster_buz_2000, minBin = 1000, num_sweeps = 100, burn_in = 20)
 infer_m <- function(v, minBin, indivs = NULL, init_m = 0.1, num_sweeps = 500, burn_in = 100) {
 
   message("Preparing data structures for MCMC")

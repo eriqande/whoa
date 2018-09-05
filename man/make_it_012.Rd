@@ -7,7 +7,7 @@
 make_it_012(M)
 }
 \arguments{
-\item{M}{a character marix of VCF genotypes.  Allowable values are
+\item{M}{a character matrix of VCF genotypes and no dimnames.  Allowable values are
 "0/0", and "0|0", which get coverted to integer 0;  "0/1", "0|1", "1/0", and "1|0",
 which get converted to integer 1; and
  "1/1", and "1|1", which get converted to integer 2.  Everything else gets
@@ -20,4 +20,9 @@ An integer matrix of values which are 0, 1, 2, or -1.
 The standard way within R of pulling values out of a named
 vector really bogs down on large data sets.  So I will do this instead.
 }
-\keyword{internal}
+\examples{
+# get an 012 matrix from the lobster data
+tmp <- t(vcfR::extract.gt(lobster_buz_2000, element = "GT"))
+dimnames(tmp) <- NULL
+g <- make_it_012(tmp)
+}

@@ -7,7 +7,7 @@
 bin_depths(D, S)
 }
 \arguments{
-\item{D}{a matrix of read depths.  Rows are individuals, columns are SNPs.  Cells where are missing
+\item{D}{a matrix of read depths.  Rows are individuals, columns are SNPs.  Cells where data are missing
 in the genotype matrix must be denoted as NA}
 
 \item{S}{the min number of observations to have in each bin}
@@ -22,5 +22,21 @@ is useful for plotting things, etc.
 }
 \description{
 bin read depths of SNPs into categories having at least S observations
+}
+\examples{
+
+# get a matrix of read depths and make it an integer matrix
+depths <- vcfR::extract.gt(lobster_buz_2000, element = "DP")
+storage.mode(depths) <- "integer"
+
+# get a character matrix of genotypes, so we can figure out which
+# are missing and mask those from depths
+genos <- vcfR::extract.gt(lobster_buz_2000, element = "GT")
+
+# make missing in depths if missing in genos
+depths[is.na(genos)] <- NA
+
+# bin the read depths into bins with at least 1000 observations in each bin
+bins <- bin_depths(depths, 1000)
 }
 \keyword{internal}

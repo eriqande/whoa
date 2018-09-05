@@ -38,6 +38,12 @@ g
 
 ```
 
-
 OK, that is all working.
+
+### Test it out with just single read depth bin
+
+```{r}
+m2 <- infer_m(v, minBin = 1e15)
+```
+
 

@@ -27,6 +27,7 @@ heterozygote miscall rate for each locus.  Typical value is c(0.5, 0.5).}
 \item{num_reps}{the number of MCMC sweeps to do.}
 }
 \description{
-This is pretty simple.
+To see how this Rcpp function is applied, see the code in
+\code{\link{infer_m}}.
 }
 \keyword{internal}

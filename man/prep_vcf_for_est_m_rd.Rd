@@ -4,13 +4,13 @@
 \alias{prep_vcf_for_est_m_rd}
 \title{convert a VCF into an 012,-1 matrix and read_depth bin matrix for estimation}
 \usage{
-prep_vcf_for_est_m_rd(v, DF, minBin)
+prep_vcf_for_est_m_rd(v, DF = "DP", minBin)
 }
 \arguments{
 \item{v}{a vcfR object into which a VCF file has been read}
 
-\item{DF}{Field to use for obtaining total read depth.  Choices are DP and AD, but only DP is
-implemented at this point. And you have to make sure that DP is a field that exists...}
+\item{DF}{Field to use for obtaining total read depth.  Currently
+all that is available is DP.}
 
 \item{minBin}{minimum number of observations for each read depth bin}
 }
@@ -20,5 +20,8 @@ This sends back a list with \code{mat012}: the 012,-1 matrix of genotypes, and
 }
 \description{
 convert a VCF into an 012,-1 matrix and read_depth bin matrix for estimation
+}
+\examples{
+pv <- prep_vcf_for_est_m_rd(lobster_buz_2000, minBin = 1000)
 }
 \keyword{internal}

@@ -12,18 +12,21 @@ of genotyping \code{A}ccuracy.
 \section{the \code{whoa} main high-level functions}{
 
 
-Fill in.
-}
+The main function in the package whoa is \code{\link{infer_m}}.
+This function infers the heterozygote miscall rate (the rate at
+which true heterozygotes have been miscalled as homozygotes in
+genotype-by-sequencing data) for calls made upon genotypes falling
+within different read depth categories.
 
-\section{genetic data formats}{
-
-
-Fill in.
+The output from  \code{\link{infer_m}} is easily plotted by passing the
+m_posteriors component of the output list from \code{infer_m} into
+\code{\link{posteriors_plot}}.
 }
 
 \section{example data}{
 
 
-Fill in.
+The package comes with a small data set, \code{\link{lobster_buz_2000}}, which
+was read in from a VCF file and is now stored in the package as a vcfR object.
 }
 

@@ -1,3 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^development$
+^README\.Rmd$
+^README\.md$
+^\.travis\.yml$

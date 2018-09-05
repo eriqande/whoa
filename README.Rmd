@@ -1,0 +1,65 @@
+---
+title: '# whoa --- Where\'s my Heterozygotes? Observations on genotyping Accuracy'
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+output:
+  github_document:
+    toc: yes
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+
+```{r, echo = FALSE, message=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "readme-figs/"
+)
+```
+
+
+This is a small, lightweight package that lets users investigate the
+distribution of genotypes in GBS data where they expect (by and large)
+Hardy-Weinberg equilibrium, in order to assess rates of genotyping errors and
+the dependence of those rates on read depth.
+
+There are 
+
+```{r}
+# load up some packages:
+library(tidyverse)
+library(whoa)
+library(vcfR)
+```
+## Some example data sets
+
+### Red Drum
+
+```{r}
+tmpdir <- tempdir()
+
+# I put this 21 Mb gzipped file up on Dropbox.
+# get it like this
+download.file(url = "https://www.dropbox.com/s/twyylsui15q65yj/red_drum_Final_Filtered_SNPs.vcf.gz?dl=1", 
+              destfile = file.path(tmpdir, "red_drum.vcf.gz"))
+
+
+# read it
+v <- read.vcfR(file.path(tmpdir, "red_drum.vcf.gz"))
+```
+
+## Plotting Observed vs Expected Genotype Frequencies
+
+First compute the expected and observed:
+```{r}
+freqs <- exp_and_obs_geno_freqs(v)
+```
+
+And then go ahead and plot that:
+```{r}
+g <- geno_freqs_scatter(freqs, max_plot_loci = 1e04)
+g
+```
+
+
+## Estimating Heterozygote Miscall Rates

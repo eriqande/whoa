@@ -17,3 +17,12 @@ This just returns a ggplot object that plots the read depth bins on the x-axis
 and the posterior mean m estimates (and credible intervals) on the y-axis, and
 depicts the number of genotypes in each read depth bin using color.
 }
+\examples{
+# get something to plot (short run for example)
+im <- infer_m(lobster_buz_2000, minBin = 1000, num_sweeps = 100, burn_in = 20)
+
+# then plot it
+g <- posteriors_plot(im$m_posteriors)
+
+# now g is a ggplot object
+}

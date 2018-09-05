@@ -2,14 +2,16 @@
 #' convert a VCF into an 012,-1 matrix and read_depth bin matrix for estimation
 #'
 #' @param v a vcfR object into which a VCF file has been read
-#' @param DF Field to use for obtaining total read depth.  Choices are DP and AD, but only DP is
-#' implemented at this point. And you have to make sure that DP is a field that exists...
+#' @param DF Field to use for obtaining total read depth.  Currently
+#' all that is available is DP.
 #' @param minBin minimum number of observations for each read depth bin
 #' @return This sends back a list with \code{mat012}: the 012,-1 matrix of genotypes, and
 #' \code{dp_bins_list}: the list returned by bin_depths().
 #' @export
 #' @keywords internal
-prep_vcf_for_est_m_rd <- function(v, DF, minBin) {
+#' @examples
+#' pv <- prep_vcf_for_est_m_rd(lobster_buz_2000, minBin = 1000)
+prep_vcf_for_est_m_rd <- function(v, DF = "DP", minBin) {
 
   # check to make sure the field named in DF exists.
   #vt <- vcfR2tidy(v, info_only = TRUE)

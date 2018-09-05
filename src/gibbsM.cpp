@@ -3,7 +3,8 @@ using namespace Rcpp;
 
 //' simulate a new miscall rate for each read depth category given X and Y
 //'
-//' This just writes new values into M as if it were an output variable
+//' This just writes new values into M as if it were an output variable.
+//' Internal function used within \code{\link{estimate_m_rd}}.
 //' @keywords internal
 // [[Rcpp::export]]
 void gibbsM(NumericVector M, int num_cats, IntegerMatrix X, IntegerMatrix Y, IntegerMatrix R, NumericVector pri) {

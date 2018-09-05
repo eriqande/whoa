@@ -1,5 +1,7 @@
 
 #' tidy up the estimate_m_rd output into something you can plot
+#'
+#' Internal function. See use in \code{\link{infer_m}}.
 #' @param E the list returned by the estimation function
 #' @param S the bin stats
 #' @param TB the tidy bins

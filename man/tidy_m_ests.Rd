@@ -16,6 +16,6 @@ tidy_m_ests(E, S, TB, burn = 50)
 \item{burn}{how much for burn in?}
 }
 \description{
-tidy up the estimate_m_rd output into something you can plot
+Internal function. See use in \code{\link{infer_m}}.
 }
 \keyword{internal}
