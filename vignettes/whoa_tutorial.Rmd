@@ -1,25 +1,24 @@
 ---
-title: "# whoa --- Where's my Heterozygotes? Observations on genotyping Accuracy"
-date: '`r format(Sys.time(), "%d %B, %Y")`'
-output:
-  github_document:
-    toc: yes
+title: "whoa Tutorial"
+author: "Eric C. Anderson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-
-```{r, echo = FALSE, message=FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  fig.path = "readme-figs/"
+  comment = "#>"
 )
 ```
 
 
 This is a small, lightweight package that lets users investigate the
-distribution of genotypes in GBS data where they expect (by and large)
+distribution of genotypes in genotype-by-sequencing (GBS) data where they expect (by and large)
 Hardy-Weinberg equilibrium, in order to assess rates of genotyping errors and
 the dependence of those rates on read depth.
 
@@ -59,7 +58,7 @@ using `vcfR::read.vcfR()`.
 
 ### Make a quick genotype frequency scatter plot
 
-```{r geno_plots}
+```{r, fig.width=7}
 # first get compute expected and observed genotype frequencies
 gfreqs <- exp_and_obs_geno_freqs(lobster_buz_2000)
 
@@ -94,9 +93,10 @@ binned <- infer_m(lobster_buz_2000, minBin = 2000)
 ```
 
 And then we can plot the posterior mean and CIs for each read depth bin.
-```{r posterior_plots}
+```{r, fig.width=7}
 posteriors_plot(binned$m_posteriors)
 ```
 
 Again, WHOA!  The het miscall rate at low read depths is super high!
+
 
