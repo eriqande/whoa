@@ -36,6 +36,17 @@ The package comes with a small bit of data from lobster to play with.  The rest 
 this document shows a quick run through a few of the functions to do an 
 analysis of a data set.
 
+## Installing
+
+To get this version off GitHub, make sure you have the `devtools` R 
+package, and then you can do like this:
+```{r, eval = FALSE}
+devtools::install_github(repo = "eriqande/whoa")
+```
+Note that the package uses Rcpp, so you will need to have installed 
+the tools needed to compile C++ programs and pointed your R installation
+to those.
+
 
 ## A quick run 
 

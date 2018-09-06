@@ -3,6 +3,7 @@ whoa --- Where's my Heterozygotes? Observations on genotyping Accuracy
 ================
 06 September, 2018
 
+-   [Installing](#installing)
 -   [A quick run](#a-quick-run)
     -   [Packages](#packages)
     -   [Lobster data](#lobster-data)
@@ -20,6 +21,17 @@ The name comes from the bolded letters in this sentence:
 It also fits well with my reaction when I started investigating heterozygote miscall rates (rates at which true heterozygotes are incorrectly called as homozygotes) in some RAD-seq data sets---My eyes bugged out and I said, "Whoa!"
 
 The package comes with a small bit of data from lobster to play with. The rest of this document shows a quick run through a few of the functions to do an analysis of a data set.
+
+Installing
+----------
+
+To get this version off GitHub, make sure you have the `devtools` R package, and then you can do like this:
+
+``` r
+devtools::install_github(repo = "eriqande/whoa")
+```
+
+Note that the package uses Rcpp, so you will need to have installed the tools needed to compile C++ programs and pointed your R installation to those.
 
 A quick run
 -----------
@@ -72,7 +84,7 @@ overall$m_posteriors
 #> # A tibble: 1 x 6
 #>     bin  mean  lo95  hi95 total_n mean_dp
 #>   <int> <dbl> <dbl> <dbl>   <int>   <dbl>
-#> 1     1 0.256 0.245 0.266   65291    65.9
+#> 1     1 0.255 0.246 0.264   65291    65.9
 ```
 
 Wow! (Or should we say "WHOA!") A het miscall rate of around 25%.
