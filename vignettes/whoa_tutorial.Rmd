@@ -28,7 +28,7 @@ The name comes from the bolded letters in this sentence:
 
 It also fits well with my reaction when I started investigating 
 heterozygote miscall rates (rates at which true heterozygotes are
-incorrectly called as heterozygotes) in some RAD-seq data sets---My eyes
+incorrectly called as homozygotes) in some RAD-seq data sets---My eyes
 bugged out and I said, "Whoa!"
 
 The package comes with a small bit of data from lobster to play with.  The rest of 
