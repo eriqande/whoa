@@ -8,7 +8,8 @@ exp_and_obs_geno_freqs(v, prop_indv_required = 0.5,
   prop_loci_required = 0.5)
 }
 \arguments{
-\item{v}{a vcfR object}
+\item{v}{a vcfR or SeqArray GDS object. Use \code{\link[whoa]{read_whoa}} to
+read VCF file inside whoa.}
 
 \item{prop_indv_required}{loci will be dropped if a proportion of
 individuals less than prop_indv_required have non-missing data at that locus.

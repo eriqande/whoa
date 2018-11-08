@@ -28,16 +28,19 @@
 #'
 #' # bin the read depths into bins with at least 1000 observations in each bin
 #' bins <- bin_depths(depths, 1000)
+#'
+#' @importFrom dplyr select distinct group_by ungroup rename arrange filter mutate summarise bind_rows
+#' @importFrom tibble as_tibble
 
 bin_depths <- function(D, S) {
 
   # first, count things up and get them into a reasonable format
-  dcnts <- as_tibble(as.data.frame(table(D))) %>%
-    mutate(D = as.integer(as.character(D))) %>%
+  dcnts <- tibble::as_tibble(as.data.frame(table(D))) %>%
+    dplyr::mutate(D = as.integer(as.character(D))) %>%
     setNames(c("D", "Freq")) %>%
-    rename(dp = D,
+    dplyr::rename(dp = D,
            n = Freq) %>%
-    arrange(dp) # just to make sure it is in increasing order
+    dplyr::arrange(dp) # just to make sure it is in increasing order
 
   # now we lump them up.  We just use a for loop for this
   idx <- 1
@@ -62,12 +65,12 @@ bin_depths <- function(D, S) {
 
   # and we add it on there with a mutate which will bark an error is something has gone awry
   tidy_bins <- dcnts %>%
-    mutate(bin = as.integer(res))
+    dplyr::mutate(bin = as.integer(res))
 
   # now we have to cut the original matrix up into these categories
   left_endpoints <- tidy_bins %>%
-    group_by(bin) %>%
-    summarise(ends = max(dp) + 0.2)
+    dplyr::group_by(bin) %>%
+    dplyr::summarise(ends = max(dp) + 0.2)
 
   cut_vec <- c(0, left_endpoints$ends)
 
@@ -79,8 +82,8 @@ bin_depths <- function(D, S) {
 
   # finally summarize the bin stats
   bin_stats <- tidy_bins %>%
-    group_by(bin) %>%
-    summarise(total_n = sum(n),
+    dplyr::group_by(bin) %>%
+    dplyr::summarise(total_n = sum(n),
               mean_dp = sum(dp * n) / sum(n))
 
   list(dp_bins = dp_bins,

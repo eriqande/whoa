@@ -63,7 +63,9 @@ if(getRversion() >= "2.15.1")  {
       "p_exp",
       "p_obs",
       "snp",
-      "z_score"
+      "z_score",
+      "INDIVIDUALS",
+      "ID"
     )
   )
 }

@@ -38,5 +38,6 @@ depths[is.na(genos)] <- NA
 
 # bin the read depths into bins with at least 1000 observations in each bin
 bins <- bin_depths(depths, 1000)
+
 }
 \keyword{internal}

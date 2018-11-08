@@ -16,6 +16,7 @@
 #' g <- geno_freqs_scatter(gfreqs)
 #'
 #' # now g is a ggplot object.
+#' @importFrom ggplot2 ggplot aes geom_jitter facet_wrap geom_polygon geom_abline
 geno_freqs_scatter <- function(gfc, alpha = 0.2, max_plot_loci = 500) {
 
   snps <- unique(gfc$snp)

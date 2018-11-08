@@ -8,7 +8,7 @@ infer_m(v, minBin, indivs = NULL, init_m = 0.1, num_sweeps = 500,
   burn_in = 100)
 }
 \arguments{
-\item{v}{a vcfR object holding the information from a VCF file with the genotype and depth data.
+\item{v}{a vcfR object or a SeqArray GDS file holding the information from a VCF file with the genotype and depth data.
 If you are going to be it down by read depth categories, the VCF file must have a DP field for
 every genotype.}
 
