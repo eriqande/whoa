@@ -2,7 +2,7 @@ Package: whoa
 Type: Package
 Title: Evaluation of Genotyping Error in Genotype by Sequencing Data
 Version: 0.0.2
-Date: 2018-11-08
+Date: 2018-11-09
 Authors@R: c(
     person(given = c("Eric", "C."), family = "Anderson", email = "eric.anderson@noaa.gov", role = c("aut", "cre")),
     person("Thierry", "Gosselin", email = "thierrygosselin@icloud.com", role = "ctb")
@@ -32,7 +32,9 @@ Suggests:
     knitr,
     rmarkdown,
     SeqArray,
-    vcfR (>= 1.3.0)
+    vcfR (>= 1.3.0),
+    httr,
+    ggpubr
 VignetteBuilder: knitr
 URL: https://github.com/eriqande/whoa
 BugReports: https://github.com/eriqande/whoa/issues
