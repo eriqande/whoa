@@ -1,7 +1,5 @@
-
-
-#' return a ggplot of observed and expected genotype freqs
-#'
+#' @title Plot of observed and expected genotype freqs
+#' @description return a ggplot of observed and expected genotype frequencies.
 #' @param gfc a tibble like that created by exp_and_obs_geno_freqs()
 #' @param alpha the transparency (alpha) parameter to apply to the points
 #' in the scatterplot. Default is 0.2.
@@ -16,7 +14,6 @@
 #' g <- geno_freqs_scatter(gfreqs)
 #'
 #' # now g is a ggplot object.
-#' @importFrom ggplot2 ggplot aes geom_jitter facet_wrap geom_polygon geom_abline
 geno_freqs_scatter <- function(gfc, alpha = 0.2, max_plot_loci = 500) {
 
   snps <- unique(gfc$snp)

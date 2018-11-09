@@ -1,8 +1,7 @@
 
 
-#' get posterior estimates for m from different read depth categories
-#'
-#' This function calls internal C++ routines that perform Markov
+#' @title get posterior estimates for m from different read depth categories
+#' @description This function calls internal C++ routines that perform Markov
 #' chain Monte Carlo to sample from the posterior distrubtion of the
 #' heterozygote miscall rate for each read depth category.
 #'

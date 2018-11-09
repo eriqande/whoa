@@ -1,12 +1,12 @@
 
 
-#' Computed expected and observed genotype frequencies from a vcfR object
-#'
-#' Under the assumption of Hardy-Weinberg equilibrium, this function uses the
+#' @title Computed expected and observed genotype frequencies
+
+#' @description Under the assumption of Hardy-Weinberg equilibrium, this function uses the
 #' estimated allele frequencies from the data set in v to compute expected genotype
 #' frequencies, and then reports these along with the observed genotype frequencies.
 #' Loci come out named as CHROM--POS.
-#'
+
 #' @param v a vcfR or SeqArray GDS object. Use \code{\link[whoa]{read_whoa}} to
 #' read VCF file inside whoa.
 #' @param prop_indv_required loci will be dropped if a proportion of

@@ -2,7 +2,7 @@
 % Please edit documentation in R/exp_and_obs_geno_freqs.R
 \name{exp_and_obs_geno_freqs}
 \alias{exp_and_obs_geno_freqs}
-\title{Computed expected and observed genotype frequencies from a vcfR object}
+\title{Computed expected and observed genotype frequencies}
 \usage{
 exp_and_obs_geno_freqs(v, prop_indv_required = 0.5,
   prop_loci_required = 0.5)

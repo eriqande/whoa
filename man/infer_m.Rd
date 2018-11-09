@@ -56,8 +56,7 @@ A list with six components:
 This function calls internal C++ routines that perform Markov
 chain Monte Carlo to sample from the posterior distrubtion of the
 heterozygote miscall rate for each read depth category.
-}
-\details{
+
 The read depth bins are
 determined by giving the function minBin---the minimum number of observations desired for each read
 depth bin.  The function then breaks the observations into bins so that each read depth bin

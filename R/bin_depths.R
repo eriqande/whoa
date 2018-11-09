@@ -28,10 +28,6 @@
 #'
 #' # bin the read depths into bins with at least 1000 observations in each bin
 #' bins <- bin_depths(depths, 1000)
-#'
-#' @importFrom dplyr select distinct group_by ungroup rename arrange filter mutate summarise bind_rows
-#' @importFrom tibble as_tibble
-
 bin_depths <- function(D, S) {
 
   # first, count things up and get them into a reasonable format
