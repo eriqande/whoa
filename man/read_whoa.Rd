@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_whoa.R
 \name{read_whoa}
 \alias{read_whoa}
-\title{read vcf file into whoa input file}
+\title{read vcf file for whoa}
 \usage{
 read_whoa(data, indivs = NULL, filename = NULL,
   parallel.core = parallel::detectCores() - 1, ...)
@@ -12,7 +12,8 @@ read_whoa(data, indivs = NULL, filename = NULL,
 
 \item{indivs}{(optional, character) Use this argument to select
 a subsample of id in the vcf file, e.g. a particular group or population of samples.
-The file is a tab-separated file with 1 column, no header, containing the individuals to
+2 options: use a character string with desired vcf sample id or a
+tab-separated file with 1 column, no header, containing the individuals to
 include in the analysis.
 By default, this is NULL, in which case everyone from the file is included.
 Default: \code{indivs = NULL}.}
@@ -29,8 +30,11 @@ The number of processor used during execution.}
 \item{...}{(optional) Advance mode that allows to pass further arguments
 for fine-tuning the function (see details).}
 }
+\value{
+A gds object.
+}
 \description{
-read vcf file into whoa \href{https://github.com/eriqande/whoa}{whoa}
+read and prepare the vcf file for whoa \href{https://github.com/eriqande/whoa}{whoa}
 package.
 }
 \details{
@@ -43,23 +47,39 @@ Default: \code{sample.snps = NULL}, will use all SNPs.
 that will be used inside function that requires randomness. With default,
 a random number is generated.
 Default: \code{random.seed = NULL}.
-\item \code{path.folder}: to write ouput in a specific path
-(used internally in radiator). Default: \code{path.folder = getwd()}.
-If the supplied directory doesn't exist, it's created.
 }
 }
 \examples{
 \dontrun{
-# with built-in defaults:
- data <- whoa::read_whoa(data = "populations.snps.vcf")
+require(httr)
+require(SeqArray)
+library(whoa)
 
-# Using more arguments:
-data <- whoa::read_whoa(
-data = "populations.snps.vcf",
-indivs = "select_ind.tsv",
-parallel.core = 5,
-filename = "salamander",
-path.folder = "salamander/het_analysis")
+# Get the lobster vcf file:
+writeBin(httr::content(httr::GET("https://datadryad.org/bitstream/handle/
+10255/dryad.108679/10156-586.recode.vcf?sequence=1"), "raw"),"lobster_data_2015.vcf")
+
+# Get the strata file containing individuals and groupings
+writeBin(httr::content(httr::GET("https://datadryad.org/bitstream/handle/
+10255/dryad.108679/README.txt?sequence=2"), "raw"),"lobster_strata_2015.tsv")
+
+# with built-in defaults:
+lobster <- whoa::read_whoa(data = "lobster_data_2015.vcf")
+
+# Using more arguments: keeping only samples in BUZ sampling sites and using 2000 SNPs:
+indivs_buz <- readr::read_tsv(file = "lobster_strata_2015.tsv",
+                          col_names = c("INDIVIDUALS", "STRATA"),
+                          col_types = "cc") \%>\%
+  dplyr::filter(STRATA == "7") \%>\%
+  dplyr::select(INDIVIDUALS) \%>\%
+  purrr::flatten_chr(.)
+
+lobster_buz_2000 <- whoa::read_whoa(
+    data = "lobster_data_2015.vcf",
+    indivs = indivs_buz,
+    sample.snps = 2000,
+    random.seed = 62994,
+    filename = "lobster_buz_2000")
 }
 }
 \references{
