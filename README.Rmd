@@ -1,12 +1,14 @@
 ---
 title: "# whoa --- Where's my Heterozygotes? Observations on genotyping Accuracy"
-date: '`r format(Sys.time(), "%d %B, %Y")`'
+author: "Eric C. Anderson,  "
+date: '`r format(Sys.time(), "%d %B %Y")`'
 output:
   github_document:
     toc: yes
 ---
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+[![DOI](https://zenodo.org/badge/142917310.svg)](https://zenodo.org/badge/latestdoi/142917310)
 
 
 ```{r, echo = FALSE, message=FALSE}
