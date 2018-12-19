@@ -2,7 +2,7 @@
 % Please edit documentation in R/geno_freqs_scatter.R
 \name{geno_freqs_scatter}
 \alias{geno_freqs_scatter}
-\title{return a ggplot of observed and expected genotype freqs}
+\title{Plot of observed and expected genotype freqs}
 \usage{
 geno_freqs_scatter(gfc, alpha = 0.2, max_plot_loci = 500)
 }
@@ -18,7 +18,7 @@ points.  If you want to plot all the points, set this to a number
 larger than the number of SNPs in the data set.}
 }
 \description{
-return a ggplot of observed and expected genotype freqs
+return a ggplot of observed and expected genotype frequencies.
 }
 \examples{
 # get the expected and observed geno freqs

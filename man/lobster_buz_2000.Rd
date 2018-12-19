@@ -20,4 +20,10 @@ lobster_buz_2000
 \description{
 A data set from the study by Benestan et al. (2016).
 }
+\references{
+Benestan L, Gosselin T, Perrier C et al. (2015)
+RAD genotyping reveals fine-scale genetic structuring and provides powerful
+population assignment in a widely distributed marine species,
+the American lobster (Homarus americanus). Molecular Ecology, 24, 3299-3315.
+}
 \keyword{datasets}

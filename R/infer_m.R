@@ -1,8 +1,7 @@
 
 
-#' get posterior estimates for m from different read depth categories
-#'
-#' This function calls internal C++ routines that perform Markov
+#' @title get posterior estimates for m from different read depth categories
+#' @description This function calls internal C++ routines that perform Markov
 #' chain Monte Carlo to sample from the posterior distrubtion of the
 #' heterozygote miscall rate for each read depth category.
 #'
@@ -15,7 +14,7 @@
 #' estimate on a read depth bin), then simply give a very large number (larger than the number of
 #' markers times the number of individuals) for minBin.  For example, you could use a number like 1e15
 #' for minBin. As a consequence, all the genotypes will be put into a single read depth bin.
-#' @param v a vcfR object holding the information from a VCF file with the genotype and depth data.
+#' @param v a vcfR object or a SeqArray GDS file holding the information from a VCF file with the genotype and depth data.
 #' If you are going to be it down by read depth categories, the VCF file must have a DP field for
 #' every genotype.
 #' @param indivs a character vector holding
@@ -59,20 +58,55 @@ infer_m <- function(v, minBin, indivs = NULL, init_m = 0.1, num_sweeps = 500, bu
 
   message("Preparing data structures for MCMC")
 
-  # deal with the indivs
-  if(is.null(indivs)) {
-    indivs <- colnames(v@gt)[-1]
+  # Using vcfR -----------------------------------------------------------------
+  if (class(v)[1] == "vcfR") {
+    if (!"vcfR" %in% utils::installed.packages()[,"Package"]) {
+      stop('Please install vcfR for this option:\n
+           install.packages("vcfR")')
+    }
+    # deal with the indivs
+    if(is.null(indivs)) {
+      indivs <- colnames(v@gt)[-1]
+    }
+    # check to make sure that all of indivs are included in the VCF
+    wrongos <- setdiff(indivs, colnames(v@gt)[-1])
+    if(length(wrongos) > 0) {
+      stop("Requesting indivs that are not in v: ", paste(wrongos, collapse = ", "))
+    }
+
+    # extract just those indivs.  This assumes that vcfR has named the first column FORMAT
+    v@gt <- v@gt[,c("FORMAT", indivs)]
   }
 
-  # check to make sure that all of indivs are included in the VCF
-  wrongos <- setdiff(indivs, colnames(v@gt)[-1])
-  if(length(wrongos) > 0) {
-    stop("Requesting indivs that are not in v: ", paste(wrongos, collapse = ", "))
+  # Using SeqArray -------------------------------------------------------------
+  if (class(v)[1] == "SeqVarGDSClass") {
+    if (!"SeqArray" %in% utils::installed.packages()[,"Package"]) {
+      stop('Please install SeqArray for this option:\n
+           devtools::install_github("zhengxwen/SeqArray")
+           or the bioconductor version:
+           source("https://bioconductor.org/biocLite.R")
+           biocLite("SeqArray")')
+    }
+    if (!"gdsfmt" %in% utils::installed.packages()[,"Package"]) {
+      stop('Please install gdsfmt for this option:\n
+           source("https://bioconductor.org/biocLite.R")
+           biocLite("gdsfmt")')
+    }
+    # deal with the indivs
+    if(is.null(indivs)) {
+      indivs <- SeqArray::seqGetData(v, "sample.id")
+    }
+    # check to make sure that all of indivs are included in the VCF
+    wrongos <- setdiff(indivs, SeqArray::seqGetData(v, "sample.id"))
+    if(length(wrongos) > 0) {
+      stop("Requesting indivs that are not in v: ", paste(wrongos, collapse = ", "))
+    }
+
+    # extract just those indivs.  This assumes that vcfR has named the first column FORMAT
+    SeqArray::seqSetFilter(object = v,
+                           sample.id = indivs,
+                           verbose = FALSE)
   }
-
-  # extract just those indivs.  This assumes that vcfR has named the first column FORMAT
-  v@gt <- v@gt[,c("FORMAT", indivs)]
-
 
 
 

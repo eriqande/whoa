@@ -11,7 +11,7 @@ output:
 ```{r}
 library(tidyverse)
 library(whoa)
-library(vcfR)
+require(vcfR)
 ```
 
 ## Red Drum

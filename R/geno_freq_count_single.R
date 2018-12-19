@@ -14,6 +14,7 @@
 #' colnames(g) <- locnames # put these back on since make_it_012 removes them
 #' gf <- geno_freq_calc_single(g)
 #' @return See information for return value of \code{\link{exp_and_obs_geno_freqs}}.
+
 geno_freq_calc_single <- function(g012) {
   g012[g012 == -1] <- NA
 

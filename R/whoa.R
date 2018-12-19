@@ -25,47 +25,17 @@
 #' @docType package
 #' @name whoa
 #' @importFrom Rcpp evalCpp
-#' @importFrom dplyr arrange
-#' @importFrom dplyr group_by
-#' @importFrom dplyr left_join
-#' @importFrom dplyr mutate
-#' @importFrom dplyr rename
-#' @importFrom dplyr summarise
-#' @importFrom magrittr %>%
-#' @importFrom stats quantile
-#' @importFrom stats setNames
-#' @importFrom tibble as_tibble
-#' @importFrom tibble tibble
+#' @importFrom dplyr arrange group_by left_join mutate rename summarise select distinct n_distinct ungroup tally filter
+#' @importFrom stats quantile setNames
+#' @importFrom tibble as_tibble tibble
+#' @importFrom purrr keep flatten_chr
+#' @importFrom readr read_tsv write_tsv
+#' @importFrom stringi stri_join stri_detect_fixed stri_sub stri_replace_all_fixed
+#' @importFrom tidyr gather
+#' @importFrom parallel detectCores
+# For magrittr: see utils.R
+
 #' @useDynLib whoa
 NULL
-
-
-# quiets concerns of R CMD check re: the . and other column names
-# that appear in dplyr chains
-if(getRversion() >= "2.15.1")  {
-  utils::globalVariables(
-    c(
-      ".",
-      "Freq",
-      "dp",
-      "bin",
-      "mean_dp",
-      "lo95",
-      "hi95",
-      "total_n",
-      "0",
-      "1",
-      "2",
-      "geno",
-      "n_exp",
-      "n_obs",
-      "ntot",
-      "p_exp",
-      "p_obs",
-      "snp",
-      "z_score"
-    )
-  )
-}
 
 

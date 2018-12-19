@@ -2,7 +2,7 @@
 % Please edit documentation in R/posteriors_plot.R
 \name{posteriors_plot}
 \alias{posteriors_plot}
-\title{return a ggplot object of the posterior esimates for heterozyote miscall rates}
+\title{Plot the posterior estimates for heterozyote miscall rates}
 \usage{
 posteriors_plot(P)
 }
