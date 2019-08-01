@@ -2,7 +2,7 @@
 % Please edit documentation in R/posteriors_plot.R
 \name{posteriors_plot}
 \alias{posteriors_plot}
-\title{return a ggplot object of the posterior esimates for heterozyote miscall rates}
+\title{return a `ggplot2' plot object of the posterior esimates for heterozyote miscall rates}
 \usage{
 posteriors_plot(P)
 }
@@ -10,10 +10,10 @@ posteriors_plot(P)
 \item{P}{the tibble that is the m_posteriors component of \code{\link{infer_m}}}
 }
 \value{
-a ggplot2 object.
+a `ggplot2' plot object.
 }
 \description{
-This just returns a ggplot object that plots the read depth bins on the x-axis
+This just returns a `ggplot2' plot object that plots the read depth bins on the x-axis
 and the posterior mean m estimates (and credible intervals) on the y-axis, and
 depicts the number of genotypes in each read depth bin using color.
 }
@@ -24,5 +24,5 @@ im <- infer_m(lobster_buz_2000, minBin = 1000, num_sweeps = 100, burn_in = 20)
 # then plot it
 g <- posteriors_plot(im$m_posteriors)
 
-# now g is a ggplot object
+# now g is a 'ggplot2' object
 }

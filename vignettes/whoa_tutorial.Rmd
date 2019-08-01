@@ -28,7 +28,8 @@ The name comes from the bolded letters in this sentence:
 
 It also fits well with my reaction when I started investigating 
 heterozygote miscall rates (rates at which true heterozygotes are
-incorrectly called as homozygotes) in some RAD-seq data sets---My eyes
+incorrectly called as homozygotes) in some restriction associated digest (RAD)
+sequencing data sets---My eyes
 bugged out and I said, "Whoa!"
 
 The package comes with a small bit of data from lobster to play with.  The rest of 
@@ -52,8 +53,8 @@ Read about the lobster data here. Execute this if you want:
 ```{r, eval=FALSE}
 help("lobster_buz_2000")
 ```
-The main thing to know is that it is a vcfR object.  You can 
-make such an object yourself by reading in a VCF file 
+The main thing to know is that it is a 'vcfR' object.  You can 
+make such an object yourself by reading in a variant call format (VCF) file 
 using `vcfR::read.vcfR()`.
 
 ### Make a quick genotype frequency scatter plot
@@ -70,7 +71,9 @@ geno_freqs_scatter(gfreqs, max_plot_loci = 2000)
 ### Now infer an overall heterozygote miscall rate.
 
 If we want to estimate the het miscall rate (over all read depth bins)
-we just set the minimum bin size to a very large value so it make just one bin:
+we just set the minimum bin size to a very large value so it make just one bin, and
+use the `infer_m` function which implements a Markov chain Monte Carlo (MCMC) algorithm
+to estimate the heteryzogote miscall rate.
 ```{r}
 overall <- infer_m(lobster_buz_2000, minBin = 1e15)
 ```

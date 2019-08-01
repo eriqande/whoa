@@ -7,7 +7,7 @@ using namespace Rcpp;
 //'
 //' The standard way within R of pulling values out of a named
 //' vector really bogs down on large data sets.  So I will do this instead.
-//' @param M a character matrix of VCF genotypes and no dimnames.  Allowable values are
+//' @param M a character matrix of variant call format (VCF) genotypes and no dimnames.  Allowable values are
 //' "0/0", and "0|0", which get coverted to integer 0;  "0/1", "0|1", "1/0", and "1|0",
 //' which get converted to integer 1; and
 //'  "1/1", and "1|1", which get converted to integer 2.  Everything else gets

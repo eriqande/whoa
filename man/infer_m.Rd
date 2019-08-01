@@ -8,8 +8,8 @@ infer_m(v, minBin, indivs = NULL, init_m = 0.1, num_sweeps = 500,
   burn_in = 100)
 }
 \arguments{
-\item{v}{a vcfR object holding the information from a VCF file with the genotype and depth data.
-If you are going to be it down by read depth categories, the VCF file must have a DP field for
+\item{v}{a `vcfR' object holding the information from a variant call format (VCF) file with the genotype and depth data.
+If you are going to be breaking the estimates down by read depth categories, the VCF file must have a DP field for
 every genotype.}
 
 \item{minBin}{minimum number of observations for each read depth bin.  If you have 10K markers
@@ -54,12 +54,12 @@ A list with six components:
 }
 \description{
 This function calls internal C++ routines that perform Markov
-chain Monte Carlo to sample from the posterior distrubtion of the
+chain Monte Carlo (MCMC) to sample from the posterior distrubtion of the
 heterozygote miscall rate for each read depth category.
 }
 \details{
 The read depth bins are
-determined by giving the function minBin---the minimum number of observations desired for each read
+determined by passing to the function \code{minBin}---the minimum number of observations desired for each read
 depth bin.  The function then breaks the observations into bins so that each read depth bin
 has at least minBin observations.
 

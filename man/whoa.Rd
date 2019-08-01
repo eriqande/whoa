@@ -27,6 +27,6 @@ m_posteriors component of the output list from \code{infer_m} into
 
 
 The package comes with a small data set, \code{\link{lobster_buz_2000}}, which
-was read in from a VCF file and is now stored in the package as a vcfR object.
+was read in from a variant call format (VCF) file and is now stored in the package as a `vcfR' object.
 }
 

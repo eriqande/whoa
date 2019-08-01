@@ -1,12 +1,12 @@
 
 
-#' return a ggplot object of the posterior esimates for heterozyote miscall rates
+#' return a `ggplot2' plot object of the posterior esimates for heterozyote miscall rates
 #'
-#' This just returns a ggplot object that plots the read depth bins on the x-axis
+#' This just returns a `ggplot2' plot object that plots the read depth bins on the x-axis
 #' and the posterior mean m estimates (and credible intervals) on the y-axis, and
 #' depicts the number of genotypes in each read depth bin using color.
 #' @param P the tibble that is the m_posteriors component of \code{\link{infer_m}}
-#' @return a ggplot2 object.
+#' @return a `ggplot2' plot object.
 #' @export
 #' @examples
 #' # get something to plot (short run for example)
@@ -15,7 +15,7 @@
 #' # then plot it
 #' g <- posteriors_plot(im$m_posteriors)
 #'
-#' # now g is a ggplot object
+#' # now g is a 'ggplot2' object
 posteriors_plot <- function(P) {
   ggplot2::ggplot(P) +
     ggplot2::geom_line(ggplot2::aes(x = mean_dp, y = mean)) +

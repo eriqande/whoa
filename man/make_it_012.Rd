@@ -7,7 +7,7 @@
 make_it_012(M)
 }
 \arguments{
-\item{M}{a character matrix of VCF genotypes and no dimnames.  Allowable values are
+\item{M}{a character matrix of variant call format (VCF) genotypes and no dimnames.  Allowable values are
 "0/0", and "0|0", which get coverted to integer 0;  "0/1", "0|1", "1/0", and "1|0",
 which get converted to integer 1; and
  "1/1", and "1|1", which get converted to integer 2.  Everything else gets

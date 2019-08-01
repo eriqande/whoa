@@ -1,13 +1,13 @@
 
 
-#' Computed expected and observed genotype frequencies from a vcfR object
+#' Computed expected and observed genotype frequencies from a `vcfR' object
 #'
 #' Under the assumption of Hardy-Weinberg equilibrium, this function uses the
 #' estimated allele frequencies from the data set in v to compute expected genotype
 #' frequencies, and then reports these along with the observed genotype frequencies.
 #' Loci come out named as CHROM--POS.
 #'
-#' @param v a vcfR object
+#' @param v a `vcfR' object
 #' @param prop_indv_required loci will be dropped if a proportion of
 #' individuals less than prop_indv_required have non-missing data at that locus.
 #' Default is 0.5
@@ -15,7 +15,7 @@
 #' non-missing loci is less than prop_loci_required. Default is 0.5.
 #' @export
 #' @return Returns a tibble with the following columns: \code{snp} = the locus name
-#' as CHROM--POS; \code{p} = The frequency of the ALT allele; \code{ntot} = the total
+#' as CHROM--POS; \code{p} = The frequency of the alternate (ALT) allele; \code{ntot} = the total
 #' number of individuals with no missing data at the locus; \code{geno} = column
 #' telling which genotype (0, 1, or 2) is referred to; \code{p_exp} = expected
 #' frequency of the genotype; \code{p_obs} = observed frequency of genotype;

@@ -2,13 +2,13 @@
 % Please edit documentation in R/exp_and_obs_geno_freqs.R
 \name{exp_and_obs_geno_freqs}
 \alias{exp_and_obs_geno_freqs}
-\title{Computed expected and observed genotype frequencies from a vcfR object}
+\title{Computed expected and observed genotype frequencies from a `vcfR' object}
 \usage{
 exp_and_obs_geno_freqs(v, prop_indv_required = 0.5,
   prop_loci_required = 0.5)
 }
 \arguments{
-\item{v}{a vcfR object}
+\item{v}{a `vcfR' object}
 
 \item{prop_indv_required}{loci will be dropped if a proportion of
 individuals less than prop_indv_required have non-missing data at that locus.
@@ -19,7 +19,7 @@ non-missing loci is less than prop_loci_required. Default is 0.5.}
 }
 \value{
 Returns a tibble with the following columns: \code{snp} = the locus name
-as CHROM--POS; \code{p} = The frequency of the ALT allele; \code{ntot} = the total
+as CHROM--POS; \code{p} = The frequency of the alternate (ALT) allele; \code{ntot} = the total
 number of individuals with no missing data at the locus; \code{geno} = column
 telling which genotype (0, 1, or 2) is referred to; \code{p_exp} = expected
 frequency of the genotype; \code{p_obs} = observed frequency of genotype;
