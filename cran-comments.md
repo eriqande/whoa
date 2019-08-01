@@ -30,6 +30,8 @@ Currently no known reverse dependencies
 ## User Notices
 
 This is the first submission of this package.  
+I am resubmitting after addressing Description and documentation changes
+requested by Martina Schmirl. See [changes here](https://github.com/eriqande/whoa/compare/4be45df9c7714e6772eb3a373ba65c2e608c0ae7...13f1d450625632842abd25162bfe83c2c0eab10d)
 
 
 
