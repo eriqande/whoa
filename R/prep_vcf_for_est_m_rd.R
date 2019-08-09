@@ -28,6 +28,13 @@ prep_vcf_for_est_m_rd <- function(v, DF = "DP", minBin) {
   # now get the read depth matrix
   dp <- vcfR::extract.gt(v, element = "DP")
   storage.mode(dp) <- "integer"
+
+  # now, if some of the markers have been imputed, but the read depths added back on there
+  # there will be a genotype call, even though the DP field is a ".".  Those .'s will
+  # have been converted to NAs, and we will now turn those into 0s. If the genotype
+  # is really not called (a -1 below...) then it will get turned back into an NA.
+  dp[is.na(dp)] <- 0
+
   dp[d012 == -1] <- NA
 
   # OK, now dp is a matrix of read depths with NAs where the genotype was unobserved
