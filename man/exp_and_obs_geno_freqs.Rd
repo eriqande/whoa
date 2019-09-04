@@ -4,11 +4,22 @@
 \alias{exp_and_obs_geno_freqs}
 \title{Computed expected and observed genotype frequencies from a `vcfR' object}
 \usage{
-exp_and_obs_geno_freqs(v, prop_indv_required = 0.5,
-  prop_loci_required = 0.5)
+exp_and_obs_geno_freqs(v = NULL, d012 = NULL,
+  prop_indv_required = 0.5, prop_loci_required = 0.5)
 }
 \arguments{
-\item{v}{a `vcfR' object}
+\item{v}{a `vcfR' object.  Exactly one of \code{v} or \code{d012} is required. But you
+can't use both!}
+
+\item{d012}{an integer matrix (or a numeric matrix, which will be coerced to
+be of integer type) with individuals in columns, and markers in rows.
+0 denotes a genotype homozygous for the reference allele, 1 is a heterozygote, 2 is a
+homozygoute for the alternate allele, and -1 denotes missing data.  This matrix is not
+required to have column (sample) names.  They won't be used if they are present.  But,
+the matrix must have rownames, which should be in the format of CHROM--POS (i.e. the "chromosome"
+name (or the "contig" name) followed by a "--" followed by the position of the marker in the "chromosome").
+Exactly one of \code{v} or \code{d012} is required. But you
+can't use both!}
 
 \item{prop_indv_required}{loci will be dropped if a proportion of
 individuals less than prop_indv_required have non-missing data at that locus.
@@ -35,5 +46,9 @@ frequencies, and then reports these along with the observed genotype frequencies
 Loci come out named as CHROM--POS.
 }
 \examples{
-eao <- exp_and_obs_geno_freqs(lobster_buz_2000)
+eao <- exp_and_obs_geno_freqs(v = lobster_buz_2000)
+
+# if you wanted to run that on an 012 matrix,
+# it would be like this:
+eao012 <- exp_and_obs_geno_freqs(d012 = lobster_buz_2000_as_012_matrix)
 }
