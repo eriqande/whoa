@@ -69,7 +69,7 @@ bin_depths <- function(D, S) {
     group_by(bin) %>%
     summarise(ends = max(dp) + 0.2)
 
-  cut_vec <- c(0, left_endpoints$ends)
+  cut_vec <- c(-0.01, left_endpoints$ends)
 
 
   dp_bins <- D
