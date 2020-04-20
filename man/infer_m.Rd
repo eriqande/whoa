@@ -4,8 +4,14 @@
 \alias{infer_m}
 \title{get posterior estimates for m from different read depth categories}
 \usage{
-infer_m(v, minBin, indivs = NULL, init_m = 0.1, num_sweeps = 500,
-  burn_in = 100)
+infer_m(
+  v,
+  minBin,
+  indivs = NULL,
+  init_m = 0.1,
+  num_sweeps = 500,
+  burn_in = 100
+)
 }
 \arguments{
 \item{v}{a `vcfR' object holding the information from a variant call format (VCF) file with the genotype and depth data.

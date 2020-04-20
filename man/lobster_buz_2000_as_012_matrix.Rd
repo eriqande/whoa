@@ -4,9 +4,11 @@
 \name{lobster_buz_2000_as_012_matrix}
 \alias{lobster_buz_2000_as_012_matrix}
 \title{An 012 matrix from  (RAD) sequence data from 36 lobsters at 2000 single nucleotide polymorphisms (SNPs)}
-\format{This is an integer matrix with positions in rows and samples in columns.
+\format{
+This is an integer matrix with positions in rows and samples in columns.
 It is an 012 matrix that corresponds to lobster_buz_2000.  It is useful as
-an example of the necessary format for the d012 argument to \code{\link{exp_and_obs_geno_freqs}}.}
+an example of the necessary format for the d012 argument to \code{\link{exp_and_obs_geno_freqs}}.
+}
 \source{
 \url{https://datadryad.org//resource/doi:10.5061/dryad.q771r.3}
 }

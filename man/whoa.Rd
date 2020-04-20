@@ -3,7 +3,6 @@
 \docType{package}
 \name{whoa}
 \alias{whoa}
-\alias{whoa-package}
 \title{whoa: Evaluation of genotyping error in genotype by sequencing data}
 \description{
 The name is found in the capitals here:  \code{W}here's my \code{H}eterozygotes?! \code{O}bservations

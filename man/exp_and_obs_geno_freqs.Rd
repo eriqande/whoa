@@ -4,8 +4,12 @@
 \alias{exp_and_obs_geno_freqs}
 \title{Computed expected and observed genotype frequencies from a `vcfR' object}
 \usage{
-exp_and_obs_geno_freqs(v = NULL, d012 = NULL,
-  prop_indv_required = 0.5, prop_loci_required = 0.5)
+exp_and_obs_geno_freqs(
+  v = NULL,
+  d012 = NULL,
+  prop_indv_required = 0.5,
+  prop_loci_required = 0.5
+)
 }
 \arguments{
 \item{v}{a `vcfR' object.  Exactly one of \code{v} or \code{d012} is required. But you
