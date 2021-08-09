@@ -27,7 +27,8 @@ Currently no known reverse dependencies
 
 ## User Notices
 
-This package was previously on CRAN but it was removed because one of its
+* Fixed the datadryad URL, which has been moved.
+* This package was previously on CRAN but it was removed because one of its
 dependencies (vcfR) had some compile errors that were not fixed in time.
 Those compile errors are now fixed with vcfR, and I am resubmitting this to be
 back up on CRAN.  Thank you.
