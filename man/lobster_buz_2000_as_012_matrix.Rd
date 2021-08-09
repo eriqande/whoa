@@ -10,7 +10,7 @@ It is an 012 matrix that corresponds to lobster_buz_2000.  It is useful as
 an example of the necessary format for the d012 argument to \code{\link{exp_and_obs_geno_freqs}}.
 }
 \source{
-\url{https://datadryad.org//resource/doi:10.5061/dryad.q771r.3}
+\url{https://datadryad.org/stash/dataset/doi:10.5061/dryad.q771r}
 }
 \usage{
 lobster_buz_2000_as_012_matrix

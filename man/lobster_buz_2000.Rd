@@ -14,7 +14,7 @@ This is the sort of object obtained after calling \code{vcfR::read.vcfR()}
 on a variant call format (VCF) file.
 }
 \source{
-\url{https://datadryad.org//resource/doi:10.5061/dryad.q771r.3}
+\url{https://datadryad.org/stash/dataset/doi:10.5061/dryad.q771r}
 }
 \usage{
 lobster_buz_2000
