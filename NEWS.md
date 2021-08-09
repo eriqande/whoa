@@ -1,5 +1,5 @@
 
-# whoa 0.0.2.999
+# whoa 0.0.2
 
 
 *Add 012 input capability to exp_and_obs_geno_freqs (for folks that don't have a VCF file).
