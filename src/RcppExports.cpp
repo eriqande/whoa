@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // estimate_m_rd
 List estimate_m_rd(IntegerMatrix Y, IntegerMatrix R, double init_m, int num_cats, NumericVector p_prior, NumericVector m_prior, int num_reps);
 RcppExport SEXP _whoa_estimate_m_rd(SEXP YSEXP, SEXP RSEXP, SEXP init_mSEXP, SEXP num_catsSEXP, SEXP p_priorSEXP, SEXP m_priorSEXP, SEXP num_repsSEXP) {

@@ -12,7 +12,7 @@
 #' This is the sort of object obtained after calling \code{vcfR::read.vcfR()}
 #' on a variant call format (VCF) file.
 #'
-#' @source \url{https://datadryad.org//resource/doi:10.5061/dryad.q771r.3}
+#' @source \url{https://datadryad.org/stash/dataset/doi:10.5061/dryad.q771r}
 "lobster_buz_2000"
 
 
@@ -25,5 +25,5 @@
 #' an example of the necessary format for the d012 argument to \code{\link{exp_and_obs_geno_freqs}}.
 #'
 #'
-#' @source \url{https://datadryad.org//resource/doi:10.5061/dryad.q771r.3}
+#' @source \url{https://datadryad.org/stash/dataset/doi:10.5061/dryad.q771r}
 "lobster_buz_2000_as_012_matrix"
