@@ -12,7 +12,7 @@
 #' @param d012 an integer matrix (or a numeric matrix, which will be coerced to
 #' be of integer type) with individuals in columns, and markers in rows.
 #' 0 denotes a genotype homozygous for the reference allele, 1 is a heterozygote, 2 is a
-#' homozygoute for the alternate allele, and -1 denotes missing data.  This matrix is not
+#' homozygote for the alternate allele, and -1 denotes missing data.  This matrix is not
 #' required to have column (sample) names.  They won't be used if they are present.  But,
 #' the matrix must have rownames, which should be in the format of CHROM--POS (i.e. the "chromosome"
 #' name (or the "contig" name) followed by a "--" followed by the position of the marker in the "chromosome").

@@ -3,7 +3,7 @@
 #' get posterior estimates for m from different read depth categories
 #'
 #' This function calls internal C++ routines that perform Markov
-#' chain Monte Carlo (MCMC) to sample from the posterior distrubtion of the
+#' chain Monte Carlo (MCMC) to sample from the posterior distribution of the
 #' heterozygote miscall rate for each read depth category.
 #'
 #' The read depth bins are
