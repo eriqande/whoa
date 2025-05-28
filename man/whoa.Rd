@@ -2,6 +2,7 @@
 % Please edit documentation in R/whoa.R
 \docType{package}
 \name{whoa}
+\alias{whoa-package}
 \alias{whoa}
 \title{whoa: Evaluation of genotyping error in genotype by sequencing data}
 \description{
@@ -29,3 +30,8 @@ The package comes with a small data set, \code{\link{lobster_buz_2000}}, which
 was read in from a variant call format (VCF) file and is now stored in the package as a `vcfR' object.
 }
 
+\author{
+\strong{Maintainer}: Eric C. Anderson \email{eric.anderson@noaa.gov}
+
+}
+\keyword{internal}

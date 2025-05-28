@@ -1,7 +1,7 @@
 Package: whoa
 Type: Package
 Title: Evaluation of Genotyping Error in Genotype-by-Sequencing Data
-Version: 0.0.2
+Version: 0.0.2.999
 Authors@R: c(
     person(given = c("Eric", "C."), family = "Anderson", email = "eric.anderson@noaa.gov", role = c("aut", "cre"))
   )
@@ -22,7 +22,7 @@ Imports:
     viridis,
     ggplot2
 LinkingTo: Rcpp
-RoxygenNote: 7.1.1
+RoxygenNote: 7.3.2
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr

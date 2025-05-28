@@ -22,7 +22,6 @@
 #' The package comes with a small data set, \code{\link{lobster_buz_2000}}, which
 #' was read in from a variant call format (VCF) file and is now stored in the package as a `vcfR' object.
 #'
-#' @docType package
 #' @name whoa
 #' @importFrom Rcpp evalCpp
 #' @importFrom dplyr arrange
@@ -37,7 +36,8 @@
 #' @importFrom tibble as_tibble
 #' @importFrom tibble tibble
 #' @useDynLib whoa
-NULL
+#' @keywords internal
+"_PACKAGE"
 
 
 # quiets concerns of R CMD check re: the . and other column names

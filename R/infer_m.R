@@ -18,9 +18,20 @@
 #' @param v a `vcfR' object holding the information from a variant call format (VCF) file with the genotype and depth data.
 #' If you are going to be breaking the estimates down by read depth categories, the VCF file must have a DP field for
 #' every genotype.
+#' @param d012 an integer matrix (or a numeric matrix, which will be coerced to
+#' be of integer type) with individuals in columns, and markers in rows.
+#' 0 denotes a genotype homozygous for the reference allele, 1 is a heterozygote, 2 is a
+#' homozygote for the alternate allele, and -1 denotes missing data.  This matrix is not
+#' required to have column (sample) names.  They won't be used if they are present.  But,
+#' the matrix must have rownames, which should be in the format of CHROM--POS (i.e. the "chromosome"
+#' name (or the "contig" name) followed by a "--" followed by the position of the marker in the "chromosome").
+#' Exactly one of \code{v} or \code{d012} is required. But you
+#' can't use both!  If you use d012 it (currently) assumed that you do not have read depths
+#' for the genotypes.
 #' @param indivs a character vector holding
 #' the names of the individuals from the VCF file to include in the analysis.  By default
-#' this is NULL, in which case everyone from the file is included.
+#' this is NULL, in which case everyone from the file is included.  Not in effect if using
+#' d012, in which case it must remain NULL.
 #' @param minBin minimum number of observations for each read depth bin.  If you have 10K markers
 #' and 50 individuals then you have about 500,000 genotypes to play with.  Requiring bins with at
 #' least 5,000 genotypes in them will give you less than 100 bins.  You can play around with this
@@ -54,31 +65,72 @@
 #' @export
 #' @examples
 #' # Shorter run than recommended (for quick example...)
-#' im <- infer_m(lobster_buz_2000, minBin = 1000, num_sweeps = 100, burn_in = 20)
-infer_m <- function(v, minBin, indivs = NULL, init_m = 0.1, num_sweeps = 500, burn_in = 100) {
+#' im <- infer_m(v = lobster_buz_2000, minBin = 1000, num_sweeps = 100, burn_in = 20)
+infer_m <- function(v = NULL, d012 = NULL, minBin, indivs = NULL, init_m = 0.1, num_sweeps = 500, burn_in = 100) {
 
-  message("Preparing data structures for MCMC")
-
-  # deal with the indivs
-  if(is.null(indivs)) {
-    indivs <- colnames(v@gt)[-1]
+  if(!xor(is.null(v), is.null(d012))) {
+    stop("Exactly one of v or d012 must be present.")
   }
 
-  # check to make sure that all of indivs are included in the VCF
-  wrongos <- setdiff(indivs, colnames(v@gt)[-1])
-  if(length(wrongos) > 0) {
-    stop("Requesting indivs that are not in v: ", paste(wrongos, collapse = ", "))
+  if(!is.null(v)) {
+    message("Preparing data structures for MCMC")
+
+
+    # deal with the indivs
+    if(is.null(indivs)) {
+      indivs <- colnames(v@gt)[-1]
+    }
+
+    # check to make sure that all of indivs are included in the VCF
+    wrongos <- setdiff(indivs, colnames(v@gt)[-1])
+    if(length(wrongos) > 0) {
+      stop("Requesting indivs that are not in v: ", paste(wrongos, collapse = ", "))
+    }
+
+    # extract just those indivs.  This assumes that vcfR has named the first column FORMAT
+    v@gt <- v@gt[,c("FORMAT", indivs)]
+
+    # prep it
+    p <- prep_vcf_for_est_m_rd(v, "DP", minBin)
+  } else {  # otherwise we must be doing d012
+
+    # check that it is numeric or integer
+    if(!(storage.mode(d012) == "integer" | storage.mode(d012) == "numeric")) {
+      stop("d012 must be a matrix of type integer or numeric, not ", storage.mode(d012))
+    }
+
+    # make sure to set storage mode to integer
+    storage.mode(d012) <- "integer"
+
+    # check to make sure there are colnames
+    if(is.null(rownames(d012))) {
+      stop("You must have rownames on d012")
+    }
+    # remove the colnames if they are there
+    colnames(d012) <- NULL
+
+    # then put into the list for running the MCMC.  We have to transpose it
+    q <- list()
+    q$mat012 <- t(d012)
+
+    # now, prepare the dp bins stuff
+    numNM <-  sum(q$mat012 != -1)
+    q$dp_bins_list <- list()
+    q$dp_bins_list$dp_bins <- matrix(1L, nrow = nrow(q$mat012), ncol = ncol(q$mat012))
+    q$dp_bins_list$dp_bins[q$mat012 == -1L] = -1L
+    q$dp_bins_list$num_cats = 1L
+    q$dp_bins_list$tidy_bins = tibble(
+      dp = -1L,
+      n = numNM,
+      bin = 1L
+    )
+    q$dp_bins_list$bin_stats = tibble(
+      bin = 1L,
+      total_n = numNM,
+      mean_dp = -1.0
+    )
+    p <- q
   }
-
-  # extract just those indivs.  This assumes that vcfR has named the first column FORMAT
-  v@gt <- v@gt[,c("FORMAT", indivs)]
-
-
-
-
-  # prep it
-  p <- prep_vcf_for_est_m_rd(v, "DP", minBin)
-
 
   message("Running MCMC")
   # estimate it

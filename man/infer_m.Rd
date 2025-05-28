@@ -5,7 +5,8 @@
 \title{get posterior estimates for m from different read depth categories}
 \usage{
 infer_m(
-  v,
+  v = NULL,
+  d012 = NULL,
   minBin,
   indivs = NULL,
   init_m = 0.1,
@@ -18,6 +19,17 @@ infer_m(
 If you are going to be breaking the estimates down by read depth categories, the VCF file must have a DP field for
 every genotype.}
 
+\item{d012}{an integer matrix (or a numeric matrix, which will be coerced to
+be of integer type) with individuals in columns, and markers in rows.
+0 denotes a genotype homozygous for the reference allele, 1 is a heterozygote, 2 is a
+homozygote for the alternate allele, and -1 denotes missing data.  This matrix is not
+required to have column (sample) names.  They won't be used if they are present.  But,
+the matrix must have rownames, which should be in the format of CHROM--POS (i.e. the "chromosome"
+name (or the "contig" name) followed by a "--" followed by the position of the marker in the "chromosome").
+Exactly one of \code{v} or \code{d012} is required. But you
+can't use both!  If you use d012 it (currently) assumed that you do not have read depths
+for the genotypes.}
+
 \item{minBin}{minimum number of observations for each read depth bin.  If you have 10K markers
 and 50 individuals then you have about 500,000 genotypes to play with.  Requiring bins with at
 least 5,000 genotypes in them will give you less than 100 bins.  You can play around with this
@@ -26,7 +38,8 @@ have at least minBin genotypes in them.}
 
 \item{indivs}{a character vector holding
 the names of the individuals from the VCF file to include in the analysis.  By default
-this is NULL, in which case everyone from the file is included.}
+this is NULL, in which case everyone from the file is included.  Not in effect if using
+d012, in which case it must remain NULL.}
 
 \item{init_m}{the initial value of the heterozygote miscall rate assumed for each read depth bin.
 By default this is 0.1.}
@@ -76,5 +89,5 @@ for minBin. As a consequence, all the genotypes will be put into a single read d
 }
 \examples{
 # Shorter run than recommended (for quick example...)
-im <- infer_m(lobster_buz_2000, minBin = 1000, num_sweeps = 100, burn_in = 20)
+im <- infer_m(v = lobster_buz_2000, minBin = 1000, num_sweeps = 100, burn_in = 20)
 }

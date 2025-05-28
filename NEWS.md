@@ -1,3 +1,7 @@
+# whoa 0.0.2.999
+
+* Add 012 input capability to infer_m() in case you don't have a VCF file.
+  - We assume for now that this means no read depth information.
 
 # whoa 0.0.2
 
